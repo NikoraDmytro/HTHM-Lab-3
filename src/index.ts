@@ -1,9 +1,14 @@
-import { renderTasksBlocks } from "./components/TasksBlocks/TasksBlocks";
+import { TasksNavigation } from "./components/TasksNavigation";
+import { Header } from "./components/Header";
+import "./index.css";
 
 function app() {
-  const tasksBlocks = renderTasksBlocks(6, 4, 2);
+  const header = Header();
+  const navigation = TasksNavigation(6, 4, 2);
+  const root = document.getElementById("root");
 
-  document.body.appendChild(tasksBlocks);
+  root?.appendChild(header);
+  root?.appendChild(navigation);
 }
 
 app();
