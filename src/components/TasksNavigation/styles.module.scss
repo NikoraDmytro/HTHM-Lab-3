@@ -1,0 +1,87 @@
+@use "@shared/variables";
+
+.navigation {
+  margin: 1.5em;
+  ul {
+    list-style-type: none;
+  }
+}
+
+.navTitle {
+  color: variables.$primary;
+  font-size: 40px;
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+  margin-left: 0.25em;
+}
+
+.navBlock {
+  padding: 1.5em;
+  max-width: 1200px;
+  margin-bottom: 3em;
+  border: 1.5px solid rgb(87, 81, 67);
+  background: linear-gradient(0.25turn, #0b0d29, #3c5d70);
+}
+
+.blockNumber {
+  font-size: 28px;
+  margin-bottom: 1em;
+  color: variables.$secondary;
+}
+
+$gap: 1.5em;
+
+.navLinksList {
+  gap: $gap;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.navLink {
+  display: block;
+  padding: 1em;
+  font-size: 20px;
+  text-align: center;
+  text-decoration: none;
+  color: variables.$secondary;
+  border: 2px solid rgb(100, 94, 94);
+  background-color: rgb(80, 56, 31);
+  transition: all 0.25s ease-in;
+
+  &:hover {
+    color: white;
+    border-color: white;
+    background-color: rgb(110, 35, 5);
+  }
+}
+
+@media (max-width: 500px) {
+  .navTitle {
+    font-size: 32px;
+  }
+
+  .navLinksList {
+    grid-auto-columns: 1fr;
+    grid-template-columns: none;
+  }
+
+  .blockNumber {
+    font-size: 24px;
+  }
+
+  .navLink {
+    width: 100%;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 350px) {
+  .navTitle {
+    font-size: 24px;
+  }
+
+  .blockNumber {
+    font-size: 18px;
+  }
+}

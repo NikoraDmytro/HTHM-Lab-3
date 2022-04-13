@@ -38,6 +38,7 @@ module.exports = {
     alias: {
       "@assets": path.resolve(__dirname, "src/assets"),
       "@pages": path.resolve(__dirname, "src/pages"),
+      "@shared": path.resolve(__dirname, "src/shared"),
     },
   },
   devServer: {

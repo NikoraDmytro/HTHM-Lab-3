@@ -1,0 +1,95 @@
+@use "@shared/base";
+@use "@shared/variables";
+
+.header {
+  @include base.flexCenter;
+  padding: 1em clamp(1em, 2.5vw, 6em);
+  box-shadow: 0 1px 7px black;
+  justify-content: space-between;
+
+  h1 {
+    color: variables.$primary;
+    font-size: 36px;
+  }
+}
+
+.studentInfo {
+  color: variables.$primary;
+  margin-right: 1em;
+
+  p {
+    text-align: end;
+    font-size: 20px;
+    font-weight: 500;
+  }
+  p:first-child {
+    margin-bottom: 8px;
+  }
+  strong {
+    float: left;
+    width: 100px;
+    margin-right: 12px;
+  }
+}
+
+@media (max-width: 900px) and (min-width: 650px) {
+  .header {
+    h1 {
+      font-size: 27px;
+    }
+
+    img {
+      width: 100px;
+    }
+  }
+
+  .studentInfo {
+    p {
+      font-size: 16px;
+    }
+
+    strong {
+      width: 80px;
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  .header {
+    flex-wrap: wrap;
+  }
+
+  .studentInfo {
+    order: 0;
+    margin-right: 0;
+  }
+
+  .header h1 {
+    order: 1;
+    width: 100%;
+    margin-top: 0.5em;
+    text-align: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .header {
+    h1 {
+      font-size: 24px;
+    }
+
+    img {
+      width: 80px;
+    }
+  }
+
+  .studentInfo {
+    p {
+      font-size: 12px;
+    }
+
+    strong {
+      width: 70px;
+    }
+  }
+} ;
