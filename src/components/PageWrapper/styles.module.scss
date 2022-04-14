@@ -1,0 +1,37 @@
+@use "shared/base";
+@use "shared/variables";
+
+.goBackLink {
+  cursor: pointer;
+  padding: 1em;
+  margin-top: 10px;
+  margin-left: 30px;
+  position: absolute;
+  text-decoration: none;
+
+  span {
+    color: white;
+    font-size: 24px;
+    text-decoration: underline;
+    transition: all 0.5s ease;
+
+    &::before {
+      content: "←";
+      top: 8px;
+      left: -14px;
+      font-size: 30px;
+      position: absolute;
+      transition: left 0.5s ease;
+    }
+  }
+
+  &:hover {
+    span {
+      color: blue;
+
+      &::before {
+        left: -18px;
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import logoIcon from "@assets/icons/logo.svg";
+import logoIcon from "assets/icons/logo.svg";
 import styles from "./styles.module.scss";
 
 export const Header = () => {

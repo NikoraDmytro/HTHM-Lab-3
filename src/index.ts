@@ -1,5 +1,5 @@
-import { TasksNavigation } from "./components/TasksNavigation";
-import { Header } from "./components/Header";
+import { TasksNavigation } from "components/TasksNavigation";
+import { Header } from "components/Header";
 import "./index.scss";
 
 function app() {

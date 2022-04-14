@@ -1,12 +1,22 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const isDev = process.env.NODE_ENV === "development";
 
+const pages = ["block1/task1"];
+
 module.exports = {
   mode: isDev ? "development" : "production",
-  entry: "./src/index.ts",
+  entry: {
+    index: "./src/index.ts",
+    ...pages.reduce((config, page) => {
+      config[page] = `./src/pages/${page}.ts`;
+
+      return config;
+    }, {}),
+  },
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].[contenthash].js",
@@ -16,7 +26,7 @@ module.exports = {
     rules: [
       {
         test: /\.(sass|scss|css)$/,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
       {
         test: /\.tsx?$/,
@@ -36,9 +46,10 @@ module.exports = {
   resolve: {
     extensions: [".ts", ".js"],
     alias: {
-      "@assets": path.resolve(__dirname, "src/assets"),
-      "@pages": path.resolve(__dirname, "src/pages"),
-      "@shared": path.resolve(__dirname, "src/shared"),
+      assets: path.resolve(__dirname, "src/assets"),
+      pages: path.resolve(__dirname, "src/pages"),
+      shared: path.resolve(__dirname, "src/shared"),
+      components: path.resolve(__dirname, "src/components"),
     },
   },
   devServer: {
@@ -55,8 +66,19 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./public/index.html",
+      excludeChunks: pages.map((page) => page),
+      template: "./src/index.html",
     }),
+    ...pages.map(
+      (page) =>
+        new HtmlWebpackPlugin({
+          filename: `${page}.html`,
+          template: `./src/pages/${page}.html`,
+        })
+    ),
     new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin({
+      filename: "[name].[contenthash].css",
+    }),
   ],
 };

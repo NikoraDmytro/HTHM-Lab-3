@@ -1,0 +1,1 @@
+export { renderPageWrapper } from "./renderPageWrapper";

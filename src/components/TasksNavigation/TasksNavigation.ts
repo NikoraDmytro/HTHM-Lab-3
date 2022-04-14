@@ -11,7 +11,7 @@ const renderNavBlock = (tasksNumber: number, blockIndex: number) => {
 
   for (let i = 1; i <= tasksNumber; i++) {
     const taskLink = document.createElement("li");
-    const href = `@pages/block${blockIndex}/task${i}`;
+    const href = `./block${blockIndex}/task${i}.html`;
 
     taskLink.innerHTML = `<a href=${href} class=${styles.navLink}>Task ${i}</a>`;
 

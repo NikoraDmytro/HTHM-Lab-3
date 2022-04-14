@@ -8,8 +8,8 @@
       "name": "typescript-plugin-css-modules"
     }],                           
     "paths": {
-      "@assets": ["assets/*"],
-      "@pages": ["pages/*"],
+      "assets/*": ["assets/*"],
+      "components/*": ["components/*"],
     },   
     "forceConsistentCasingInFileNames": true,            
     "strict": true,                                      
