@@ -7,7 +7,7 @@ function app() {
   const root = document.getElementById("root");
 
   const header = Header();
-  const navigation = TasksNavigation(6, 4, 2);
+  const navigation = TasksNavigation(5, 4, 2);
 
   main.appendChild(navigation);
 

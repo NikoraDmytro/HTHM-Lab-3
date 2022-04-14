@@ -5,22 +5,32 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const isDev = process.env.NODE_ENV === "development";
 
-const pages = ["block1/task1"];
+const pages = [
+  "block1/task1",
+  "block1/task2",
+  "block1/task3",
+  "block1/task4",
+  "block1/task5",
+
+  /* "block2/task1/index","block2/task2/index","block2/task3/index","block2/task4/index",
+  "block3/task1/index","block3/task2/index", */
+];
 
 module.exports = {
   mode: isDev ? "development" : "production",
   entry: {
     index: "./src/index.ts",
     ...pages.reduce((config, page) => {
-      config[page] = `./src/pages/${page}.ts`;
+      config[page] = `./src/pages/${page}/index.ts`;
 
       return config;
     }, {}),
   },
   output: {
+    clean: true,
     path: path.resolve(__dirname, "dist"),
     filename: "[name].[contenthash].js",
-    clean: true,
+    assetModuleFilename: "assets/[name].[contenthash].[ext]",
   },
   module: {
     rules: [
@@ -34,12 +44,12 @@ module.exports = {
         exclude: "/node-modules/",
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        use: "file-loader",
+        test: /\.(png|svg|jpg|jpeg|gif|woff|woff2|eot|ttf|otf)$/,
+        type: "asset/resource",
       },
       {
-        test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        use: "file-loader",
+        test: /\.html$/i,
+        loader: "html-loader",
       },
     ],
   },
@@ -66,14 +76,15 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      excludeChunks: pages.map((page) => page),
+      chunks: ["index"],
       template: "./src/index.html",
     }),
     ...pages.map(
       (page) =>
         new HtmlWebpackPlugin({
+          chunks: [page, "index"],
           filename: `${page}.html`,
-          template: `./src/pages/${page}.html`,
+          template: `./src/pages/${page}/index.html`,
         })
     ),
     new CleanWebpackPlugin(),

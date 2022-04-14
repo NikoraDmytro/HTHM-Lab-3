@@ -3,17 +3,20 @@ import { renderPageWrapper } from "components/PageWrapper";
 import styles from "./styles.module.scss";
 
 const renderText = (text: string, size: number) => {
+  const main = document.getElementsByTagName("main")[0];
   const textElement = document.createElement("p");
 
   textElement.textContent = text;
   textElement.style.fontSize = size + "px";
 
-  document.body.appendChild(textElement);
+  main.appendChild(textElement);
 };
 
 const task1 = () => {
   renderPageWrapper();
+
   const form = document.forms[0];
+
   form.className = styles.addTextForm;
 
   const formValues = {
@@ -34,6 +37,9 @@ const task1 = () => {
   form.addEventListener("submit", (event: SubmitEvent) => {
     event.preventDefault();
 
+    window.scrollBy({
+      top: window.innerHeight,
+    });
     renderText(formValues.text, formValues.fontSize);
   });
 };
