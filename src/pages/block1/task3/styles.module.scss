@@ -1,0 +1,25 @@
+@use "shared/components";
+@use "shared/base";
+
+main {
+  padding: 1em 2.5em;
+}
+
+.changeFontSizeBtn {
+  $bg-color: rgb(3, 3, 48);
+  @include base.resetButton();
+  margin: 1em;
+  padding: 1em;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 20px;
+  background-color: $bg-color;
+
+  &:hover {
+    background-color: lighten($bg-color, 20);
+  }
+  &:active {
+    background-color: lighten($bg-color, 40);
+  }
+}
