@@ -2,8 +2,9 @@
 @use "shared/variables";
 
 .goBackLink {
-  cursor: pointer;
+  z-index: 50;
   padding: 1em;
+  cursor: pointer;
   margin-top: 10px;
   margin-left: 30px;
   position: absolute;
