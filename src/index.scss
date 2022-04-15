@@ -14,7 +14,11 @@
   font-family: "Roboto", Times, "Times New Roman", serif;
 }
 
+html,
 body {
-  min-height: 100vh;
+  height: 100%;
+}
+
+body {
   background: variables.$ukrainian_back;
 }
