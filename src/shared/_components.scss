@@ -9,13 +9,13 @@ h2 {
 }
 
 @media (max-width: 500px) {
-  .navTitle {
+  h2 {
     font-size: 32px;
   }
 }
 
 @media (max-width: 350px) {
-  .navTitle {
+  h2 {
     font-size: 24px;
   }
 }

@@ -3,13 +3,13 @@ import { renderPageWrapper } from "components/PageWrapper";
 import styles from "./styles.module.scss";
 
 const renderText = (text: string, size: number) => {
-  const main = document.getElementsByTagName("main")[0];
+  const main = document.querySelector("main");
   const textElement = document.createElement("p");
 
   textElement.textContent = text;
   textElement.style.fontSize = size + "px";
 
-  main.appendChild(textElement);
+  main?.appendChild(textElement);
 };
 
 const task1 = () => {
@@ -17,14 +17,14 @@ const task1 = () => {
 
   const form = document.forms[0];
 
-  form.className = styles.addTextForm;
-
   const formValues = {
     text: "Hello World",
     fontSize: 16,
   };
 
-  const [textInput, fontSizeInput] = form.getElementsByTagName("input");
+  form.className = styles.addTextForm;
+
+  const [textInput, fontSizeInput] = form.querySelectorAll("input");
 
   textInput.addEventListener("change", () => {
     formValues.text = textInput.value;
@@ -37,10 +37,9 @@ const task1 = () => {
   form.addEventListener("submit", (event: SubmitEvent) => {
     event.preventDefault();
 
-    window.scrollBy({
-      top: window.innerHeight,
-    });
     renderText(formValues.text, formValues.fontSize);
+
+    window.scroll(0, window.outerHeight);
   });
 };
 

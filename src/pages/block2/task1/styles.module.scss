@@ -1,0 +1,16 @@
+.tooltipsBlock {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.bottomTooltips {
+  bottom: 3em;
+  position: absolute;
+  width: calc(100% - 5em);
+
+  > div {
+    color: black;
+    border-color: black;
+  }
+}

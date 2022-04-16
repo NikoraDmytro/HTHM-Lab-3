@@ -4,27 +4,26 @@ import styles from "./styles.module.scss";
 
 const task2 = () => {
   renderPageWrapper();
-  const main = document.getElementsByTagName("main")[0];
-  const movingImage = main.getElementsByTagName("img")[0];
 
-  movingImage.className = styles.movingImage;
+  const movingImage = document.querySelector(
+    "#movingImage"
+  ) as HTMLImageElement;
+
+  movingImage?.classList.add(styles.movingImage);
 
   let top = 0;
   let left = 0;
 
   setInterval(() => {
-    left += movingImage.clientWidth;
+    const imageRect = movingImage.getBoundingClientRect();
 
-    if (left + movingImage.width > document.body.clientWidth) {
+    const { width, height, right, bottom } = imageRect;
+
+    if (right + width >= window.innerWidth) {
       left = 0;
-      top += movingImage.clientHeight;
-    }
-
-    if (top + movingImage.height > document.body.clientHeight) {
-      top = 0;
-
-      console.log(document.body.clientHeight);
-      console.log(top, movingImage);
+      top = bottom + height >= window.innerHeight ? 0 : top + height;
+    } else {
+      left += width;
     }
 
     movingImage.style.top = top + "px";

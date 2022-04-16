@@ -12,8 +12,11 @@ const pages = [
   "block1/task4",
   "block1/task5",
 
-  /* "block2/task1/index","block2/task2/index","block2/task3/index","block2/task4/index",
-  "block3/task1/index","block3/task2/index", */
+  "block2/task1",
+  "block2/task2",
+  "block2/task3",
+  "block2/task4",
+  /*"block3/task1","block3/task2", */
 ];
 
 module.exports = {
@@ -68,7 +71,7 @@ module.exports = {
     port: 4000,
     compress: true,
   },
-  devtool: isDev ? "source-map" : "",
+  devtool: isDev ? "source-map" : false,
   optimization: {
     splitChunks: {
       chunks: "all",

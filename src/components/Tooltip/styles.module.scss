@@ -1,0 +1,86 @@
+@use "shared/variables";
+
+.tooltip {
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  position: relative;
+  border-bottom: 1.5px dotted white;
+}
+
+.tooltipDropDown {
+  z-index: 100;
+  width: 300px;
+  display: none;
+  color: white;
+  padding: 0.75em;
+  font-size: 20px;
+  max-width: 90vw;
+  position: absolute;
+  border-radius: 5px;
+  line-height: 1.25em;
+  text-align: justify;
+  background: variables.$block_background;
+}
+
+$arrow_border_color: rgb(0, 0, 71);
+
+.tooltipDropDown::before {
+  left: 20px;
+  content: "";
+  position: absolute;
+  border: 10px solid transparent;
+}
+
+.centerTooltip {
+  left: 50%;
+  transform: translateX(-50%);
+
+  &::before {
+    left: 50%;
+  }
+}
+
+.rightTooltip {
+  right: 0;
+
+  &::before {
+    right: 20px;
+    left: initial;
+  }
+}
+
+.bellowTooltip {
+  margin-top: 16px;
+
+  &::before {
+    top: 0;
+    margin-top: -20px;
+    border-bottom-color: $arrow_border_color;
+  }
+}
+
+.aboveTooltip {
+  bottom: 100%;
+  margin-bottom: 16px;
+
+  &::before {
+    top: 100%;
+    margin-bottom: -20px;
+    border-top-color: $arrow_border_color;
+  }
+}
+
+.tooltipDropDown.visible {
+  display: block;
+  animation: fadeIn 0.25s linear;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

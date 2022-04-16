@@ -2,44 +2,39 @@ import { renderPageWrapper } from "components/PageWrapper";
 
 import styles from "./styles.module.scss";
 
-const task2 = () => {
+const task4 = () => {
   renderPageWrapper();
 
-  let interval = 1000;
-  const button =
-    document.getElementById("speedUp") ?? document.createElement("button");
-  const clock =
-    document.getElementById("clock") ?? document.createElement("div");
+  const clock = document.querySelector("#clock") as Element;
+  const button = document.querySelector("#speedUp");
+
+  let counter = 1000;
   const now = new Date();
 
   clock.textContent = now.toLocaleTimeString();
-  clock.className = styles.clock;
+  clock.classList.add(styles.clock);
 
-  const newClockInterval = (interval: number) => {
-    const prev = setInterval(() => {
-      now.setSeconds(now.getSeconds() + 1);
+  button?.classList.add(styles.speedUpBtn);
 
-      clock.textContent = now.toLocaleTimeString();
-    }, interval);
+  const clockTic = () => {
+    now.setSeconds(now.getSeconds() + 1);
 
-    return () => clearInterval(prev);
+    clock.textContent = now.toLocaleTimeString();
   };
 
-  let clear = newClockInterval(interval);
+  let interval = setInterval(clockTic, counter);
 
-  button.className = styles.speedUpBtn;
+  button?.addEventListener("click", () => {
+    counter /= 2;
 
-  button.addEventListener("click", () => {
-    interval /= 2;
-
-    if (interval < 10) {
+    if (counter < 10) {
       alert("Too fast! Clock reset!");
-      interval = 1000;
+      counter = 1000;
     }
 
-    clear();
-    clear = newClockInterval(interval);
+    clearInterval(interval);
+    interval = setInterval(clockTic, counter);
   });
 };
 
-task2();
+task4();
