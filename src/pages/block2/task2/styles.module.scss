@@ -1,0 +1,29 @@
+.colorPicker {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+
+  svg {
+    transition: all 0.5s ease;
+  }
+}
+
+.colorsList {
+  list-style-type: none;
+
+  > li {
+    padding: 1em;
+    font-size: 20px;
+    cursor: pointer;
+    text-align: center;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:active {
+      opacity: 0.6;
+    }
+  }
+}

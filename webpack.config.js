@@ -16,7 +16,9 @@ const pages = [
   "block2/task2",
   "block2/task3",
   "block2/task4",
-  /*"block3/task1","block3/task2", */
+
+  "block3/task1",
+  "block3/task2",
 ];
 
 module.exports = {

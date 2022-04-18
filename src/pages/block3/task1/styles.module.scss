@@ -1,0 +1,66 @@
+@use "shared/base";
+
+@keyframes popUp {
+  from {
+    right: -100%;
+  }
+  to {
+    right: 60px;
+  }
+}
+
+.adBlock {
+  right: 60px;
+  bottom: 60px;
+  width: 300px;
+  position: fixed;
+  animation: popUp 0.5s ease;
+  background-color: rgb(72, 1, 238);
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  h2 {
+    font-size: 24px;
+    text-align: center;
+  }
+}
+
+.closeAdBtn {
+  @include base.resetButton();
+  @include base.flexCenter();
+  z-index: 5;
+  top: -20px;
+  right: -20px;
+  padding: 1.5em;
+  border-radius: 50%;
+  position: absolute;
+  background-color: white;
+
+  span {
+    height: 5px;
+    width: 30px;
+    display: block;
+    position: absolute;
+    border-radius: 30px;
+    background-color: black;
+  }
+  span:nth-child(1) {
+    transform: rotate(45deg);
+  }
+  span:nth-child(2) {
+    transform: rotate(-45deg);
+  }
+
+  &:hover {
+    background-color: black;
+    span {
+      background-color: white;
+    }
+  }
+  &:active {
+    opacity: 0.8;
+  }
+}
