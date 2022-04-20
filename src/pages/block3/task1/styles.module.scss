@@ -1,20 +1,11 @@
 @use "shared/base";
 
-@keyframes popUp {
-  from {
-    right: -100%;
-  }
-  to {
-    right: 60px;
-  }
-}
-
 .adBlock {
-  right: 60px;
   bottom: 60px;
   width: 300px;
+  right: -300px;
   position: fixed;
-  animation: popUp 0.5s ease;
+  transition: all 0.5s ease;
   background-color: rgb(72, 1, 238);
 
   img {
@@ -26,6 +17,10 @@
     font-size: 24px;
     text-align: center;
   }
+}
+
+.showAd {
+  right: 60px;
 }
 
 .closeAdBtn {
