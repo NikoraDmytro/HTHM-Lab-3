@@ -7,14 +7,16 @@ export const renderPageWrapper = () => {
 
   const goBackLink = document.createElement("a");
 
-  goBackLink.href = "/";
+  goBackLink.href = "./index.html";
   goBackLink.innerHTML = "<span>Go Back</span>";
   goBackLink.className = styles.goBackLink;
 
   document.body.insertAdjacentElement("afterbegin", goBackLink);
   document.body.insertAdjacentElement("afterbegin", header);
 
-  goBackLink.addEventListener("click", () => {
-    document.location.replace("/");
+  goBackLink.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    window.history.back();
   });
 };

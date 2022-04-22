@@ -6,7 +6,7 @@ export const Header = () => {
   header.className = styles.header;
 
   header.innerHTML = `
-    <a href="/"><img src=${logoIcon} alt="Logo" /></a>
+    <img src=${logoIcon} alt="Logo" />
     <h1>Laboratory work №3</h1>
     <div class=${styles.studentInfo}>
       <p>
