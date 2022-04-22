@@ -1,0 +1,93 @@
+@use "shared/base";
+
+.notebook {
+  width: 100%;
+  overflow: hidden;
+  height: fit-content;
+  border-radius: 20px;
+
+  > h1 {
+    z-index: 10;
+    padding: 0.5em;
+    font-size: 40px;
+    text-align: center;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    background-color: #f7cb15;
+    box-shadow: inset 0px -1px 8px #684e01;
+  }
+}
+
+.notebookBody {
+  height: 60vh;
+  background-color: #f7f7f7;
+
+  aside {
+    width: 25%;
+    float: left;
+    height: 100%;
+    padding: 1em;
+    background-color: white;
+    border-right: 1px solid black;
+  }
+}
+
+.notebookContent {
+  width: 75%;
+  float: left;
+  height: 100%;
+  padding: 1em;
+  overflow-y: auto;
+  background-color: #f7f7f7;
+}
+
+.createNote {
+  @include base.flexCenter(row);
+  font-size: 24px;
+  cursor: pointer;
+  padding: 1em 2px;
+  color: rgb(1, 175, 1);
+  justify-content: space-between;
+
+  button {
+    @include base.flexCenter(row);
+    @include base.resetButton();
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #e9f8f5;
+
+    span {
+      width: 20px;
+      height: 2.5px;
+      display: block;
+      position: absolute;
+      border-radius: 10px;
+      background-color: #00a082;
+
+      &:last-child {
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+  &:hover {
+    color: green;
+    button {
+      background-color: #00a082;
+      span {
+        background-color: #e9f8f5;
+      }
+    }
+  }
+
+  &:active {
+    color: rgb(2, 32, 2);
+    button {
+      background-color: #015545;
+      span {
+        background-color: #ffffff;
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+.notesList {
+  list-style-type: none;
+
+  li {
+    width: 100%;
+    color: blue;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 12px 5px;
+    text-decoration: underline blue;
+  }
+
+  li:hover {
+    color: black;
+    background-color: lightblue;
+    text-decoration: underline black;
+  }
+
+  li:active {
+    background-color: lightcyan;
+  }
+}
+
+.noteTitle {
+  padding-bottom: 0.5em;
+  text-align: center;
+  border-bottom: 2px dotted #bdbdbd;
+
+  span {
+    font-size: 0.85em;
+    font-style: oblique;
+    font-weight: normal;
+  }
+}
+
+.noteText {
+  margin: 0;
+  margin-top: 1em;
+  color: black;
+  min-height: calc(100% - 90px);
+  padding: 0 0.25em;
+  font-style: italic;
+  white-space: pre-wrap;
+  word-break: break-all;
+  background: repeating-linear-gradient(
+    transparent,
+    transparent 26px,
+    #bdbdbd 26px,
+    #bdbdbd 27px
+  );
+}

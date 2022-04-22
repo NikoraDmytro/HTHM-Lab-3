@@ -1,5 +1,5 @@
 export const changeContent = (newContent: string | HTMLElement) => {
-  const notebookContent = document.querySelector("#notebookContent");
+  const notebookContent = document.querySelector("#content");
 
   if (!notebookContent) return;
 
